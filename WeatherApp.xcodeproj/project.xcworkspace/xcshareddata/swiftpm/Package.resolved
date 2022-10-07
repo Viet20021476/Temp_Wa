@@ -1,0 +1,77 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b",
+        "version" : "5.6.2"
+      }
+    },
+    {
+      "identity" : "gradientprogressbar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fxm90/GradientProgressBar",
+      "state" : {
+        "revision" : "5c97947257bf88b18446cf430650443354f8f17a",
+        "version" : "2.1.1"
+      }
+    },
+    {
+      "identity" : "handyjson",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alibaba/HandyJSON.git",
+      "state" : {
+        "revision" : "dcf39cf062680ffa4fd0acb7f9117a97755c113f",
+        "version" : "5.0.2"
+      }
+    },
+    {
+      "identity" : "lightweightobservable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fxm90/LightweightObservable",
+      "state" : {
+        "revision" : "f7aeda3ab67922bd3ad252c5a311c58ee3e37bf5",
+        "version" : "2.2.2"
+      }
+    },
+    {
+      "identity" : "nvactivityindicatorview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ninjaprox/NVActivityIndicatorView.git",
+      "state" : {
+        "revision" : "bcb52371f2259254bac6690f92bb474a61768c47",
+        "version" : "5.1.1"
+      }
+    },
+    {
+      "identity" : "parchment",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rechsteiner/Parchment.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "cad6924f8a292eecaedc1bdefb57006f7979b9eb"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core",
+      "state" : {
+        "revision" : "18abbb4e9dc268620fa499923a92921bf26db8c6",
+        "version" : "12.7.0"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "554b605990ac1232427fe27ad61f302f5c74ac4c"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryVC" customModule="WeatherApp" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="lgn-yV-8d8"/>
+                <outlet property="viewBlur" destination="qBM-wZ-iVb" id="98K-cG-uu8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBM-wZ-iVb">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qBM-wZ-iVb" secondAttribute="bottom" id="6CA-ko-6pr"/>
+                <constraint firstItem="qBM-wZ-iVb" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="6Nc-lv-GQf"/>
+                <constraint firstItem="qBM-wZ-iVb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VHe-DB-cne"/>
+                <constraint firstItem="qBM-wZ-iVb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fyV-p2-ufV"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
+        </view>
+    </objects>
+</document>
