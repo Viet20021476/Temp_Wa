@@ -2,25 +2,30 @@
 
 import UIKit
 import CoreLocation
- 
+
 //search bar
 extension CityViewController: UISearchBarDelegate {
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            if searchBar.text == "" {
-                isSearching = false
-                tableView.reloadData()
-            } else {
-                isSearching = true
-                filteredData = []
-                let cities = cities.filter({$0.city.contains(searchText)})
-                filteredData = cities.map({ city in
-                    city.city
-                })
-                tableView.reloadData()
-            }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == "" {
+            isSearching = false
+            tableView.reloadData()
+        } else {
+            isSearching = true
+            filteredData = []
+            let cities = cities.filter({$0.city.contains(searchText)})
+            filteredData = cities.map({ city in
+                city.city
+            })
+            tableView.reloadData()
         }
     }
- 
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+}
+
 //parse JSON from local.json
 extension CityViewController {
     
@@ -49,8 +54,8 @@ extension CityViewController {
         return []
     }
 }
-    
- 
+
+
 //local.json
 struct City: Decodable {
     let city: String
@@ -58,18 +63,18 @@ struct City: Decodable {
     let lng: String
     let country: String
 }
- 
+
 //ip
 struct CurrentCity: Decodable {
     let city: String
     let lat: Double
     let lon: Double
 }
- 
+
 protocol CityListener {
     func listener(lat:String, lng: String)
 }
- 
+
 class CityViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -82,31 +87,31 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isSearching = false
     
     var currentCity: CurrentCity?
- 
- 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //create req
         let url = "http://ip-api.com/json"
         getData(from: url)
- 
+        
         //local json parse
         let jsonData = readLocalJSONFile(forName: "local")
         if let data = jsonData {
-                cities = parse(jsonData: data)
-                tableView.reloadData()
+            cities = parse(jsonData: data)
+            tableView.reloadData()
         }
- 
+        
         // set delegate
         self.tableView.delegate = self
         self.tableView.dataSource = self
- 
-//        // set tableview size
-//        tableView.frame = view.frame
-//        tableView.keyboardDismissMode = .onDrag
+        
+        //        // set tableview size
+        //        tableView.frame = view.frame
+        //        tableView.keyboardDismissMode = .onDrag
         // set tableview
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self))
-//        self.view.addSubview(tableView)
+        //        self.view.addSubview(tableView)
         
         //search bar
         searchBar.delegate = self
@@ -119,7 +124,7 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         func swipeToHomeScreen(sender:UISwipeGestureRecognizer) {
             self.navigationController?.popViewController(animated: true)
         }
-   }
+    }
     
     func getData(from url: String) {
         
@@ -149,11 +154,11 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-//            tableView.reloadData()
+            //            tableView.reloadData()
         })
         task.resume()
     }
- 
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
             return filteredData.count
@@ -168,13 +173,13 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
         if isSearching {
             cell.textLabel?.text = filteredData[indexPath.row]
         } else {
- 
+            
             cell.textLabel?.text = """
                     \(cities[indexPath.row].city), \(cities[indexPath.row].country)
                     Latitude: \(cities[indexPath.row].lat), Longitude: \(cities[indexPath.row].lng)
                     """
         }
- 
+        
         cell.textLabel?.sizeToFit()
         cell.textLabel?.numberOfLines = 0
         return cell
@@ -183,12 +188,11 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
- 
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row) cell was selected")
         cityListener?.listener(lat: cities[indexPath.row].lat, lng: cities[indexPath.row].lng)
         navigationController?.popViewController(animated: true)
     }
 }
- 
 
